@@ -2,6 +2,7 @@ import { IncomingMessage, ServerResponse } from "http";
 import { createProduct, readProduct, saveProducts } from "../service/product.service.js";
 import type { IProduct } from "../types/product.type.js";
 import { parseBody } from "../utility/parseBody.js";
+import { sendResponse } from "../utility/sendResponse.js";
 
 export const productController = async (req: IncomingMessage, res: ServerResponse) => {
   const url = req.url;
@@ -17,16 +18,13 @@ export const productController = async (req: IncomingMessage, res: ServerRespons
       const product = products.find((p: IProduct) => p.id === id);
 
       if (!product) {
-        res.writeHead(404, { "content-type": "application/json" });
-        return res.end(JSON.stringify({ message: "Product not found", data: [] }));
+        return sendResponse(res, 404, false, "Product not found", []);
       }
 
-      res.writeHead(200, { "content-type": "application/json" });
-      return res.end(JSON.stringify({ message: "Product details", data: product }));
+      return sendResponse(res, 200, true, "Product details", product);
     }
 
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(JSON.stringify({ message: "All products", data: products }));
+    return sendResponse(res, 200, true, "All products", products);
   } else if (method === "POST" && url === "/products") {
     const body = await parseBody(req);
     const newProduct: IProduct = {
@@ -34,46 +32,39 @@ export const productController = async (req: IncomingMessage, res: ServerRespons
       ...body,
     };
     createProduct(newProduct);
-    res.writeHead(201, { "content-type": "application/json" });
-    return res.end(JSON.stringify({ message: "Product created successfully", data: newProduct }));
+    return sendResponse(res, 201, true, "Product created successfully", newProduct);
   } else if (method === "PUT" && url?.startsWith("/products")) {
     const body = await parseBody(req);
     const products = readProduct();
 
     if (id === null || isNaN(id)) {
-      res.writeHead(400, { "content-type": "application/json" });
-      return res.end(JSON.stringify({ message: "Invalid product ID", data: null }));
+      return sendResponse(res, 400, false, "Invalid product ID", null);
     }
 
     const index = products.findIndex((p: IProduct) => p.id === id);
     if (index < 0) {
-      res.writeHead(404, { "content-type": "application/json" });
-      return res.end(JSON.stringify({ message: "Product not found!", data: null }));
+      return sendResponse(res, 404, false, "Product not found", null);
     }
 
     products[index] = { ...products[index], ...body, id: products[index]!.id };
     saveProducts(products);
 
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(JSON.stringify({ message: "Product updated successfully!", data: products[index] }));
+    return sendResponse(res, 200, true, "Product updated successfully", products[index]);
   } else if (method === "DELETE" && url?.startsWith("/products")) {
     const products = readProduct();
 
     if (id === null || isNaN(id)) {
-      res.writeHead(400, { "content-type": "application/json" });
-      return res.end(JSON.stringify({ message: "Invalid product ID", data: null }));
+      return sendResponse(res, 400, false, "Invalid product ID", null);
     }
 
     const index = products.findIndex((p: IProduct) => p.id === id);
     if (index < 0) {
-      res.writeHead(404, { "content-type": "application/json" });
-      return res.end(JSON.stringify({ message: "Product not found!", data: null }));
+      return sendResponse(res, 404, false, "Product not found", null);
     }
 
     products.splice(index, 1);
     saveProducts(products);
 
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(JSON.stringify({ message: "Product deleted successfully!", data: null }));
+    return sendResponse(res, 200, true, "Product deleted successfully", null);
   }
 };
