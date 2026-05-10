@@ -98,5 +98,118 @@
     "stock": 40,
     "rating": 4.2,
     "image": "https://example.com/images/coolingpad.jpg"
-  }
+  },
+  [
+    {
+      "id": 1,
+      "name": "Wireless Gaming Mouse",
+      "category": "Accessories",
+      "brand": "LogiTech",
+      "price": 45,
+      "stock": 32,
+      "rating": 4.7,
+      "image": "https://example.com/images/mouse.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Mechanical RGB Keyboard",
+      "category": "Accessories",
+      "brand": "RedSwitch",
+      "price": 89,
+      "stock": 18,
+      "rating": 4.8,
+      "image": "https://example.com/images/keyboard.jpg"
+    },
+    {
+      "id": 3,
+      "name": "27 Inch 2K Monitor",
+      "category": "Monitor",
+      "brand": "ViewMax",
+      "price": 249,
+      "stock": 10,
+      "rating": 4.6,
+      "image": "https://example.com/images/monitor.jpg"
+    },
+    {
+      "id": 4,
+      "name": "USB-C Fast Charger",
+      "category": "Charger",
+      "brand": "PowerPro",
+      "price": 25,
+      "stock": 50,
+      "rating": 4.5,
+      "image": "https://example.com/images/charger.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Noise Cancelling Headphones",
+      "category": "Audio",
+      "brand": "SoundBeat",
+      "price": 120,
+      "stock": 15,
+      "rating": 4.9,
+      "image": "https://example.com/images/headphone.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Portable SSD 1TB",
+      "category": "Storage",
+      "brand": "FastDrive",
+      "price": 140,
+      "stock": 22,
+      "rating": 4.8,
+      "image": "https://example.com/images/ssd.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Smart Fitness Watch",
+      "category": "Wearable",
+      "brand": "FitZone",
+      "price": 199,
+      "stock": 12,
+      "rating": 4.4,
+      "image": "https://example.com/images/watch.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Bluetooth Speaker",
+      "category": "Audio",
+      "brand": "BoomX",
+      "price": 65,
+      "stock": 28,
+      "rating": 4.3,
+      "image": "https://example.com/images/speaker.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Gaming Chair",
+      "category": "Furniture",
+      "brand": "ComfortSeat",
+      "price": 299,
+      "stock": 7,
+      "rating": 4.7,
+      "image": "https://example.com/images/chair.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Laptop Cooling Pad",
+      "category": "Accessories",
+      "brand": "CoolAir",
+      "price": 35,
+      "stock": 40,
+      "rating": 4.2,
+      "image": "https://example.com/images/coolingpad.jpg"
+    },
+    {
+      "id": 1778428783271,
+      "name": "Wireless Gaming Mouse",
+      "category": "Accessories",
+      "brand": "LogiTech",
+      "price": 45,
+      "stock": 32,
+      "rating": 4.7,
+      "image": "https://example.com/images/mouse.jpg",
+      "description": "High precision wireless gaming mouse with RGB lighting and ergonomic design."
+    }
+  ]
 ]
